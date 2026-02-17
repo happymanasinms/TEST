@@ -252,28 +252,33 @@
     <div class="pay-modal-sheet" id="payModalSheet">
         <div class="pay-close-bar" onclick="closePayModal()"></div>
         <div class="pay-modal-title">💳 Monthly Fee Payment</div>
-        <div class="pay-modal-subtitle">E-Vidya Academy — ମାସିକ ଶୁଳ୍କ ପ୍ରଦାନ</div>
-        <div class="pay-amount-badge">₹150 / Month</div>
-        <a href="#" class="pay-direct-btn" id="directPayBtn">
-            ⚡ Click Here to Pay Directly — ଏଠାରେ କ୍ଲିକ୍ କରି ପେମେଣ୍ଟ କରନ୍ତୁ ।
-        </a>
-       
-        <div class="pay-upi-row">
-            <div class="pay-upi-id" id="upiDisplay">8260825712-0@airtel</div>
-            <button class="pay-copy-btn" onclick="copyUPINew()">📋 Copy</button>
+        <div class="pay-modal-subtitle">E-Vidya Academy — ₹150 / Month</div>
+
+        <!-- 4 Buttons -->
+        <div class="pay-btn-grid">
+            <a href="#" id="directPayBtn" class="pay-action-btn pay-btn-pay">
+                ⚡ ଏଠାରେ ପେମେଣ୍ଟ କରନ୍ତୁ । 
+            </a>
+            <button class="pay-action-btn pay-btn-how" onclick="toggleHowTo()">
+                📋 କିପରି ପେମେଣ୍ଟ କରିବେ ଏଠାରେ ଜାଣନ୍ତୁ । 
+            </button>
+            <a href="https://wa.me/+918260825712?text=I%20have%20paid%20%E2%82%B9150%20fee%20for%20E-Vidya%20Academy."
+               target="_blank" class="pay-action-btn pay-btn-wa">
+                📲 ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ କୁ ଏଠାରେ ପଠାନ୍ତୁ । 
+            </a>
+            <button class="pay-action-btn pay-btn-close" onclick="closePayModal()">
+                ✕ ଏଠାରେ ବନ୍ଦ କରନ୍ତୁ । 
+            </button>
         </div>
-        <div class="pay-steps">
-            <div class="pay-steps-title">📱 ପେମେଣ୍ଟ କିପରି କରିବେ ? ଆସନ୍ତୁ ଜାଣିବା:</div>
-            <div class="pay-step">1️⃣ &nbsp;ଉପରେ ଥିବା ⚡ ବଟନ୍ ରେ କ୍ଲିକ୍ କରନ୍ତୁ — ଆପଣଙ୍କ UPI ଆପ୍ ଯଥା ଫୋନ-ପେ କିମ୍ବା ଗୁଗଲ-ପେ ଖୋଲିଯିବ ।</div>
-            <div class="pay-step">3️⃣ &nbsp;ସେଠାରେ ପେମେଣ୍ଟ କରନ୍ତୁ । </div>
+
+        <!-- How To Pay (hidden by default) -->
+        <div class="pay-howto" id="payHowTo">
+            <div class="pay-step">1️⃣ &nbsp;⚡ ବଟନ୍ ଦବାନ୍ତୁ — UPI ଆପ୍ ଖୋଲିଯିବ ।</div>
+            <div class="pay-step">3️⃣ &nbsp;ଏହାପରେ Pay ବଟନ୍ ଦବାନ୍ତୁ ।</div>
             <div class="pay-step">4️⃣ &nbsp;ଏହାପରେ ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ ନିଅନ୍ତୁ ।</div>
-            <div class="pay-step">5️⃣ &nbsp;ନିମ୍ନରେ ଥିବା ହ୍ଵାଟ୍ସ ଆପ୍ ବଟନ୍ କୁ ବ୍ୟବହାର କରି ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ ପଠାନ୍ତୁ ।</div>
+            <div class="pay-step">5️⃣ &nbsp;📲 ଏହାପରେ ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ କୁ ପଠାନ୍ତୁ । </div>
             <div class="pay-step">6️⃣ &nbsp;1 ଘଣ୍ଟା ମଧ୍ୟରେ ସେବା ପୁନଃ ପ୍ରାପ୍ତ କରିପାରିବେ ।</div>
         </div>
-        <a href="https://wa.me/+918260825712?text=I%20have%20paid%20%E2%82%B9150%20fee%20for%20E-Vidya%20Academy."
-           target="_blank" class="pay-wa-btn">
-            📲 ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ ପଠାଇବା ପାଇଁ ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ ।
-        </a>
     </div>
 </div>
 
