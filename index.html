@@ -150,6 +150,7 @@
         footer h3 { color: #fff; font-size: 1.2em; margin-bottom: 8px; text-align: center; }
         footer p { color: #cbd5e0; font-size: 0.85em; text-align: center; line-height: 1.6; margin-bottom: 12px; }
         .footer-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 15px 0; }
+.footer-links a:last-child:nth-child(odd) { grid-column: 1 / -1; }
         .footer-links a { display: block; background: rgba(102,126,234,0.2); padding: 10px; border-radius: 8px; text-decoration: none; color: #90cdf4; font-weight: 600; text-align: center; font-size: 0.85em; border: 1px solid rgba(102,126,234,0.3); }
         .footer-notice { background: rgba(252,129,129,0.15); border: 2px solid #fc8181; border-radius: 10px; padding: 15px; margin: 15px 0; }
         .footer-notice h4 { color: #fc8181; font-size: 0.95em; margin-bottom: 8px; text-align: center; }
@@ -188,7 +189,7 @@
 .info-modal-header h2 { color: white; font-size: 1.05em; font-weight: 900; margin: 0; line-height: 1.3; }
 .info-modal-close { background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.4); color: white; width: 34px; height: 34px; border-radius: 50%; font-size: 1em; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
 .info-modal-close:active { transform: scale(0.9); background: rgba(255,255,255,0.35); }
-.info-modal-body { padding: 20px; overflow-y: auto; font-size: 0.82em; line-height: 1.75; color: #2d3748; }
+.info-modal-body { padding: 20px; overflow-y: auto; font-size: 0.82em; line-height: 1.75; color: #2d3748; text-align: justify; }
 .info-modal-body h3 { color: #667eea; font-size: 0.95em; font-weight: 900; margin: 16px 0 6px; border-left: 3px solid #667eea; padding-left: 8px; }
 .info-modal-body h3:first-child { margin-top: 0; }
 .info-modal-body .odia-text { color: #4a5568; font-size: 0.97em; line-height: 1.85; margin-bottom: 10px; background: #f7f8ff; border-radius: 8px; padding: 8px 10px; border-left: 3px solid #764ba2; }
@@ -201,7 +202,7 @@
 
 <div class="container">
     <div class="minimal-disclaimer">
-        <p><strong style="color:#fc8181;">⚠️ Private service • Not affiliated with any Board, University or Government • </strong><a href="https://odisha-e-guru-dne.pages.dev/DISCLAIMERS/">Full Disclaimer</a></p>
+        <p><strong style="color:#fc8181;">⚠️ Private service • Not affiliated with any Board, University or Government • </strong><a href="#" onclick="openInfoModal('disclaimer'); return false;">Full Disclaimer</a></p>
     </div>
     <div style="text-align:center; margin-bottom: 8px;">
         <img src="https://raw.githubusercontent.com/happymanasinms/TEST/main/LOGO.png"
@@ -312,11 +313,12 @@
     <h3>🌹 E-Vidya Academy 🌹</h3>
     <p>Private Online Parent Coaching Service<br><strong style="color:#fc8181;">NOT affiliated with Government</strong></p>
     <div class="footer-links">
-        <a href="#" onclick="openInfoModal('contact'); return false;">📧 Contact Us</a>
-        <a href="#" onclick="openInfoModal('about'); return false;">ℹ️ About Us</a>
-        <a href="#" onclick="openInfoModal('terms'); return false;">📜 Terms & Conditions</a>
-        <a href="#" onclick="openInfoModal('privacy'); return false;">🔒 Privacy Policy</a>
-        <a href="#" onclick="openInfoModal('refund'); return false;">💰 Refund Policy</a>
+       <a href="#" onclick="openInfoModal('contact'); return false;">📧 Contact Us</a>
+<a href="#" onclick="openInfoModal('about'); return false;">ℹ️ About Us</a>
+<a href="#" onclick="openInfoModal('terms'); return false;">📜 Terms & Conditions</a>
+<a href="#" onclick="openInfoModal('privacy'); return false;">🔒 Privacy Policy</a>
+<a href="#" onclick="openInfoModal('refund'); return false;">💰 Refund Policy</a>
+<a href="#" onclick="openInfoModal('disclaimer'); return false;">⚠️ Full Disclaimer</a>
     </div>
     <div class="footer-copyright">© 2026 E-Vidya Academy. All Rights Reserved.<br>Private educational business under Indian law.</div>
 </footer>
@@ -807,6 +809,40 @@ const infoContent = {
             <div class="eng-text">Any dispute regarding this policy shall be subject to the jurisdiction of courts located in Odisha, India. Governing law shall be the laws of India including the Consumer Protection Act, 2019 and the Information Technology Act, 2000.</div>
             <div class="odia-text">ଯେ କୌଣସି ବିବାଦ ଓଡ଼ିଶା ରାଜ୍ୟର ଆଦାଲତ ଅଧୀନ ଥିବ । ଭାରତୀୟ ଗ୍ରାହକ ସୁରକ୍ଷା ଆଇନ 2019 ଏବଂ ସୂଚନା ଓ ପ୍ରଯୁକ୍ତି ଆଇନ 2000 ଏଠାରେ ପ୍ରଯୁଜ୍ୟ ।</div>
             <div class="legal-notice"><p>⚠️ ଭୁଲ ବୁଝାମଣା ବା ଅଜ୍ଞତା ଫେରସ୍ତ ଦାବির ଆଧାର ନୁହେଁ । Ignorance of this policy shall not constitute grounds for a refund claim.</p></div>
+        `
+    },
+    disclaimer: {
+        title: '⚠️ Full Disclaimer — ସମ୍ପୂର୍ଣ୍ଣ ଦାବିତ୍ୟାଗ',
+        body: `
+            <h3>ସ୍ୱତନ୍ତ୍ର ଘୋଷଣା — Independent Declaration</h3>
+            <div class="odia-text">E-Vidya Academy କୌଣସି ସରକାରୀ ସଂସ୍ଥା, ବୋର୍ଡ, ବିଶ୍ୱବିଦ୍ୟାଳୟ, କିମ୍ବା ସରକାରୀ ସଂଗଠନ ସହ କିଛିମାତ୍ର ସଂଯୁକ୍ତ ନୁହେଁ । ଏ ସ୍ଥାନରେ ଦ୍ୱ୍ୟର୍ଥ ନ ରଖି ଏହା ସ୍ପଷ୍ଟ ଭାବରେ ଘୋଷଣା କରାଯାଉଛି ।</div>
+            <div class="eng-text"><strong>E-Vidya Academy is a fully independent, privately owned and operated educational coaching service. It has absolutely NO affiliation, association, endorsement, recognition, or connection of any kind with the Government of India, Government of Odisha, any State or Central Board of Education, any University, or any statutory body whatsoever.</strong></div>
+
+            <h3>ନାମ ଓ ଚିହ୍ନ — Name and Branding</h3>
+            <div class="eng-text">The name "E-Vidya Academy", its logo, and all associated branding are the exclusive intellectual property of its proprietor. Any similarity to any government scheme, portal, or programme bearing similar names is purely coincidental. The use of educational terminology does not imply any official status or government recognition.</div>
+            <div class="odia-text">"E-Vidya Academy" ନାମ ଏବଂ ଏହার ଲୋଗୋ ସ୍ୱତ୍ୱାଧିକାରୀଙ୍କ ଏକଚ୍ଛତ୍ର ଜ୍ଞାନ-ସ୍ୱତ୍ୱ ସମ୍ପତ୍ତି ଅଟେ । ସରକାରୀ ଯୋଜନା ସହ ଏହି ନାମର ଯଦି ସାମ୍ୟ ଦେଖାଯାଏ ତାହା ସଂପୂର୍ଣ୍ଣ ଅନିଚ୍ଛାକୃତ ।</div>
+
+            <h3>ଶିକ୍ଷାଗତ ଫଳ — Academic Outcomes</h3>
+            <div class="eng-text">E-Vidya Academy makes no warranty, guarantee, or representation — express or implied — regarding any academic result, examination score, pass percentage, rank, or educational outcome. All content provided is for general guidance and coaching support purposes only. The proprietor, its coaches, and associates expressly disclaim all liability for any direct, indirect, incidental, or consequential loss arising from use or reliance upon this service.</div>
+            <div class="odia-text">E-Vidya Academy ପରୀକ୍ଷା ଫଳ, ଶ୍ରେଣୀ ଉତ୍ତୀର୍ଣ୍ଣ, ବା ଶିକ୍ଷାଗତ ଉନ୍ନତି ବିଷୟରେ କୌଣସି ନିଶ୍ଚୟତା ଦିଏ ନାହିଁ ।ଏହି ସେବାର ଉଦ୍ଦେଶ୍ୟ କେବଳ ମାର୍ଗଦର୍ଶନ ।</div>
+
+            <h3>ବିଷୟବସ୍ତୁ ଦାୟଭାର — Content Liability</h3>
+            <div class="eng-text">While every effort is made to ensure accuracy, E-Vidya Academy does not warrant that the content is error-free, complete, or up to date with the latest syllabus changes made by any Board or University. Users are advised to independently verify all information against official sources before relying upon it for examination preparation.</div>
+            <div class="odia-text">ଆମ୍ଭ ବିଷୟବସ୍ତୁ ସଠିକ ରଖିବା ପ୍ରୟାସ କରୁ, ତଥାପି ଯେ କୌଣସି ବୋର୍ଡ ବା ବିଶ୍ୱବିଦ୍ୟାଳୟ ର ଆଧିକାରିକ ସୂଚନା ସହ ଯୋଗ୍ୟ ଯାଞ୍ଚ ଆବଶ୍ୟକ ।</div>
+
+            <h3>ଇଣ୍ଟରନେଟ ଓ ସ୍ୱତନ୍ତ୍ର ସ୍ଥଳ — Platform Disclaimer</h3>
+            <div class="eng-text">E-Vidya Academy operates through digital platforms including WhatsApp, Google Sites, and web applications. The availability, uptime, and performance of these platforms are beyond our direct control. We shall not be liable for any service interruption caused by internet failure, platform downtime, or technical malfunction beyond our control.</div>
+            <div class="odia-text">ଡିଜିଟାଲ ପ୍ଲାଟଫର୍ମ ପ୍ରଦର୍ଶନ ଆମ୍ଭ ନିୟନ୍ତ୍ରଣ ବାହାରେ ଥିବାରୁ ଇଣ୍ଟରନେଟ ବ୍ୟର୍ଥତା ବା ଟେକ୍ନିକ ସମସ୍ୟା ପାଇଁ E-Vidya Academy ଦାୟୀ ନୁହେଁ ।</div>
+
+            <h3>ଶୁଳ୍କ ଅସ୍ୱୀକୃତି — Fee Disclaimer</h3>
+            <div class="eng-text">The monthly fee of ₹150 is charged for access to coaching guidance content only. It does not constitute any form of school or university admission fee, examination fee, registration fee with any Board or University, or any official educational enrolment. No receipt issued by E-Vidya Academy shall be treated as an official educational document.</div>
+            <div class="odia-text">₹150 ମାସିକ ଶୁଳ୍କ କୋଚିଂ ମାର୍ଗଦର୍ଶନ ପ୍ରବେଶ ପାଇଁ ମାତ୍ର । ଏହା ବୋର୍ଡ, ବିଶ୍ୱବିଦ୍ୟାଳୟ, ବା ଅନ୍ୟ ଆଧିକାରିକ ଶୁଳ୍କ ନୁହେଁ ।</div>
+
+            <h3>ଆଇନ ଅଧିକ୍ଷେତ୍ର — Governing Law</h3>
+            <div class="eng-text">This disclaimer and all matters arising from the use of E-Vidya Academy services shall be governed by and construed in accordance with the laws of India. Any dispute shall be subject to the exclusive jurisdiction of the competent courts of Odisha.</div>
+            <div class="odia-text">ଏହି ଦାବିତ୍ୟାଗ ଭାରତୀୟ ଆଇନ ଅନୁସାରେ ବ୍ୟାଖ୍ୟାଯୋଗ୍ୟ ଏବଂ ଓଡ଼ିଶା ଆଦାଲତ ଏ ବ୍ୟାପାରରେ ଏକ ଅଧିକ ଅଧିକ୍ଷେତ୍ର ରଖେ ।</div>
+
+            <div class="legal-notice"><p>⚠️ ଏହି ସ୍ଥଳ ବ୍ୟବହାର ଅର୍ଥ ଏହି ସମ୍ପୂର୍ଣ୍ଣ ଦାବିତ୍ୟାଗ ଆପଣ ସ୍ୱୀକାର କରୁଛନ୍ତି । By using this service you conclusively accept this Full Disclaimer in its entirety.</p></div>
         `
     }
 };
