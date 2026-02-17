@@ -482,148 +482,46 @@
     </div>
 </div>
 
-<!-- Payment Section -->
-<div style="
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    border-radius: 20px;
-    padding: 24px 20px;
-    margin-top: 24px;
-    text-align: center;
-    border: 2px solid rgba(255,215,0,0.4);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+<button class="pay-floating-btn" onclick="openPayModal()">
+    💳 ଫି ପେମେଣ୍ଟ କରିବା ପାଇଁ ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ । 
+</button>
 
-    <!-- Heading -->
-    <h3 style="
-        color: #ffd700;
-        font-size: 1.1em;
-        font-weight: 900;
-        margin-bottom: 6px;
-        letter-spacing: 0.5px;">
-        💳 Fee Payment — ଫି ପ୍ରଦାନ କରନ୍ତୁ
-    </h3>
-
-    <p style="
-        color: rgba(255,255,255,0.85);
-        font-size: 0.82em;
-        font-weight: 600;
-        margin-bottom: 16px;
-        line-height: 1.5;">
-        ମାସିକ ଫି: <strong style="color:#ffd700;">₹150 per month</strong><br>
-        UPI / QR Code ଦ୍ୱାରା Payment କରନ୍ତୁ
-    </p>
-
-    <!-- QR Code Image -->
-    <div style="
-        background: white;
-        border-radius: 16px;
-        padding: 16px;
-        display: inline-block;
-        box-shadow: 0 4px 20px rgba(255,215,0,0.3);
-        margin-bottom: 16px;">
-        <img src="https://raw.githubusercontent.com/happymanasinms/TEST/main/QR%20OF%20RANJAN%20BEHERA.png"
-             alt="Payment QR Code - E-Vidya Academy"
-             style="
-                width: 200px;
-                height: 200px;
-                object-fit: contain;
-                display: block;">
-        <p style="
-            color: #333;
-            font-size: 0.78em;
-            font-weight: 700;
-            margin-top: 10px;
-            margin-bottom: 0;">
-            📷 Camera ଦ୍ୱାରା Scan କରନ୍ତୁ
-        </p>
+<div class="pay-modal-overlay" id="payModal" onclick="handlePayModalClick(event)">
+    <div class="pay-modal-sheet" id="payModalSheet">
+        <div class="pay-close-bar" onclick="closePayModal()"></div>
+        <div class="pay-modal-title">💳 Monthly Fee Payment</div>
+        <div class="pay-modal-subtitle">E-Vidya Academy — ମାସିକ ଶୁଳ୍କ ପ୍ରଦାନ</div>
+        <div class="pay-amount-badge">₹150 / Month</div>
+        <a href="#" class="pay-direct-btn" id="directPayBtn">
+            ⚡ Click Here to Pay Directly — ଏଠାରେ କ୍ଲିକ୍ କରି ପେମେଣ୍ଟ କରନ୍ତୁ । 
+        </a>
+        <div class="pay-qr-section">
+            <div class="pay-qr-label">📷 Or Scan QR Code</div>
+            <img src="https://raw.githubusercontent.com/happymanasinms/TEST/main/QR%20OF%20RANJAN%20BEHERA.png"
+                 alt="Payment QR Code"
+                 class="pay-qr-img"
+                 onclick="directPay()">
+            <div class="pay-qr-hint">👆 ଏହି QR କୋଡ ଉପରେ କ୍ଲିକ୍ କଲେ UPI ଆପ୍ ଖୋଲିଯିବ । </div>
+        </div>
+        <div class="pay-upi-row">
+            <div class="pay-upi-id" id="upiDisplay">8260825712-0@airtel</div>
+            <button class="pay-copy-btn" onclick="copyUPINew()">📋 Copy</button>
+        </div>
+        <div class="pay-steps">
+            <div class="pay-steps-title">📱 ପେମେଣ୍ଟ କିପରି କରିବେ ? ଆସନ୍ତୁ ଜାଣିବା:</div>
+            <div class="pay-step">1️⃣ &nbsp;ଉପରେ ଥିବା ⚡ ବଟନ୍ ରେ କ୍ଲିକ୍ କରନ୍ତୁ — ଆପଣଙ୍କ UPI ଆପ୍ ଯଥା ଫୋନ-ପେ କିମ୍ବା ଗୁଗଲ-ପେ ଖୋଲିଯିବ । </div>
+            <div class="pay-step">2️⃣ &nbsp;₹150 ଆପଣା App ରେ Already ଭର୍ତ୍ତି ହୋଇ ଥିବ</div>
+            <div class="pay-step">3️⃣ &nbsp;Pay ବଟନ୍ ଦବାନ୍ତୁ</div>
+            <div class="pay-step">4️⃣ &nbsp;ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ ନିଅନ୍ତୁ</div>
+            <div class="pay-step">5️⃣ &nbsp; ନିମ୍ନରେ ଥିବା ହ୍ଵାଟ୍ସ ଆପ୍ ବଟନ୍ କୁ ବ୍ୟବହାର କରି ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ ପଠାନ୍ତୁ । </div>
+            <div class="pay-step">6️⃣ &nbsp;1 ଘଣ୍ଟା ମଧ୍ୟରେ ସେବା ପୁନଃ ପ୍ରାପ୍ତ କରିପାରିବେ । </div>
+        </div>
+        <a href="https://wa.me/+918260825712?text=I%20have%20paid%20%E2%82%B9150%20fee%20for%20E-Vidya%20Academy."
+           target="_blank" class="pay-wa-btn">
+            📲 ପେମେଣ୍ଟ ର ସ୍କ୍ରିନ୍-ସଟ୍ ପଠାଇବା ପାଇଁ ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ । 
+        </a>
     </div>
-
-    <!-- UPI ID -->
-    <div style="
-        background: rgba(255,215,0,0.12);
-        border: 1px solid rgba(255,215,0,0.4);
-        border-radius: 12px;
-        padding: 12px 16px;
-        margin-bottom: 16px;
-        display: inline-block;
-        min-width: 220px;">
-        <p style="
-            color: rgba(255,255,255,0.7);
-            font-size: 0.75em;
-            font-weight: 600;
-            margin-bottom: 4px;">
-            UPI ID
-        </p>
-        <p style="
-            color: #ffd700;
-            font-size: 1em;
-            font-weight: 900;
-            margin: 0;
-            letter-spacing: 0.5px;"
-            id="upiId">
-            yourname@upi
-        </p>
-        <button onclick="copyUPI()" style="
-            background: rgba(255,215,0,0.2);
-            border: 1px solid rgba(255,215,0,0.5);
-            color: #ffd700;
-            padding: 6px 16px;
-            border-radius: 8px;
-            font-size: 0.78em;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 8px;">
-            📋 Copy UPI ID
-        </button>
-    </div>
-
-    <!-- Payment Steps -->
-    <div style="
-        background: rgba(255,255,255,0.06);
-        border-radius: 12px;
-        padding: 14px 16px;
-        margin-bottom: 16px;
-        text-align: left;">
-        <p style="
-            color: #ffd700;
-            font-size: 0.82em;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-align: center;">
-            📱 Payment କିପରି କରିବେ
-        </p>
-        <p style="color:rgba(255,255,255,0.85); font-size:0.78em; font-weight:600; margin:6px 0; line-height:1.5;">
-            1️⃣ &nbsp;GPay / PhonePe / Paytm ଖୋଲନ୍ତୁ
-        </p>
-        <p style="color:rgba(255,255,255,0.85); font-size:0.78em; font-weight:600; margin:6px 0; line-height:1.5;">
-            2️⃣ &nbsp;QR Code Scan କରନ୍ତୁ ଅଥବା UPI ID ଦିଅନ୍ତୁ
-        </p>
-        <p style="color:rgba(255,255,255,0.85); font-size:0.78em; font-weight:600; margin:6px 0; line-height:1.5;">
-            3️⃣ &nbsp;₹150 Enter କରନ୍ତୁ
-        </p>
-        <p style="color:rgba(255,255,255,0.85); font-size:0.78em; font-weight:600; margin:6px 0; line-height:1.5;">
-            4️⃣ &nbsp;Payment କରିବା ପରେ Screenshot WhatsApp କରନ୍ତୁ
-        </p>
-        <p style="color:rgba(255,255,255,0.85); font-size:0.78em; font-weight:600; margin:6px 0; line-height:1.5;">
-            5️⃣ &nbsp;Access Code ପାଇବେ 2 ଘଣ୍ଟା ମଧ୍ୟରେ
-        </p>
-    </div>
-
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/+918260825712?text=I%20have%20paid%20the%20fee%20for%20E-Vidya%20Academy.%20Please%20send%20my%20access%20code."
-       target="_blank"
-       style="
-        display: inline-block;
-        background: #25D366;
-        color: white;
-        padding: 13px 28px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 0.9em;
-        box-shadow: 0 4px 15px rgba(37,211,102,0.4);">
-        📲 Payment Screenshot WhatsApp କରନ୍ତୁ
-    </a>
-    
+</div>
 <footer>
     <h3>🌹 E-Vidya Academy 🌹</h3>
     <p>Private Online Parent Coaching Service<br><strong style="color:#fc8181;">NOT affiliated with Government</strong></p>
@@ -1428,20 +1326,46 @@ const hcResources = [
     { id:'HC-SBC', name:'STATE BAR COUNCIL', odia:'OSBC', desc:'OSBC', url:'https://barcouncilofodisha.org/' }
 ];
 
-function copyUPI() {
-    const upi = document.getElementById('upiId').textContent.trim();
-    navigator.clipboard.writeText(upi).then(() => {
-        alert('UPI ID Copied! ✅');
-    }).catch(() => {
-        // Fallback for older phones
+const EVIDYA_UPI_ID = '8260825712-0@airtel';
+const EVIDYA_UPI_NAME = 'Ranjan Behera, The Proprietor of E-Vidya Academy';
+const EVIDYA_AMOUNT = '150';
+const EVIDYA_NOTE = 'EvidyaAcademy-MonthlyFee';
+const upiLink = `upi://pay?pa=${EVIDYA_UPI_ID}&pn=${encodeURIComponent(EVIDYA_UPI_NAME)}&am=${EVIDYA_AMOUNT}&cu=INR&tn=${EVIDYA_NOTE}`;
+
+window.addEventListener('load', () => {
+    const btn = document.getElementById('directPayBtn');
+    const disp = document.getElementById('upiDisplay');
+    if (btn) btn.href = upiLink;
+    if (disp) disp.textContent = EVIDYA_UPI_ID;
+});
+
+function openPayModal() {
+    document.getElementById('payModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closePayModal() {
+    document.getElementById('payModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+function handlePayModalClick(e) {
+    if (e.target === document.getElementById('payModal')) closePayModal();
+}
+function directPay() {
+    window.location.href = upiLink;
+}
+function copyUPINew() {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(EVIDYA_UPI_ID)
+            .then(() => alert('UPI ID Copied! ✅\n' + EVIDYA_UPI_ID));
+    } else {
         const el = document.createElement('textarea');
-        el.value = upi;
+        el.value = EVIDYA_UPI_ID;
         document.body.appendChild(el);
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-        alert('UPI ID Copied! ✅');
-    });
+        alert('UPI ID Copied! ✅\n' + EVIDYA_UPI_ID);
+    }
 }
     
 function createBasicTrainingCard() {
@@ -1938,6 +1862,206 @@ document.getElementById('searchInput').addEventListener('input',()=>{
 });
 
 showLevels();
+
+    .pay-floating-btn {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 20px auto 0;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+    color: #1a1a2e;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.05em;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(247,151,30,0.5);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.pay-floating-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 60%);
+    animation: shimmer 2.5s infinite;
+}
+@keyframes shimmer {
+    0%   { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+.pay-floating-btn:active { transform: scale(0.97); }
+.pay-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+    z-index: 2000;
+    justify-content: center;
+    align-items: flex-end;
+}
+.pay-modal-overlay.active { display: flex; }
+.pay-modal-sheet {
+    background: linear-gradient(180deg, #1a1a2e 0%, #0f3460 100%);
+    border-radius: 24px 24px 0 0;
+    padding: 28px 20px 40px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 92vh;
+    overflow-y: auto;
+    animation: slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    border-top: 3px solid rgba(255,215,0,0.5);
+}
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+.pay-close-bar {
+    width: 40px; height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    margin: 0 auto 20px;
+    cursor: pointer;
+}
+.pay-modal-title {
+    color: #ffd700;
+    font-size: 1.15em;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 4px;
+}
+.pay-modal-subtitle {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.pay-amount-badge {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: #1a1a2e;
+    font-size: 1.6em;
+    font-weight: 900;
+    text-align: center;
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+.pay-direct-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 1em;
+    font-weight: 900;
+    cursor: pointer;
+    margin-bottom: 14px;
+    text-decoration: none;
+    text-align: center;
+}
+.pay-direct-btn:active { transform: scale(0.97); }
+.pay-qr-section {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 16px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 14px;
+}
+.pay-qr-label {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+.pay-qr-img {
+    width: 180px; height: 180px;
+    object-fit: contain;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(255,215,0,0.3);
+}
+.pay-qr-hint {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.pay-upi-row {
+    background: rgba(255,215,0,0.1);
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 10px;
+}
+.pay-upi-id {
+    color: #ffd700;
+    font-size: 0.95em;
+    font-weight: 800;
+    flex: 1;
+    word-break: break-all;
+}
+.pay-copy-btn {
+    background: rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.5);
+    color: #ffd700;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.pay-steps {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+}
+.pay-steps-title {
+    color: #ffd700;
+    font-size: 0.82em;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.pay-step {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 5px 0;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.pay-step:last-child { border-bottom: none; }
+.pay-wa-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.92em;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
     </script>
 
     <!-- PWA Install Button -->
