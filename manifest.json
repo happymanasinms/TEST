@@ -1,7 +1,7 @@
 {
-    "name": "Odisha e-Guru",
-    "short_name": "e-Guru",
-    "description": "Odisha Parent Learning Platform - Empowering Parents to Teach Their Children",
+  "name": "E-Vidya Academy",
+"short_name": "E-Vidya",
+"description": "E-Vidya Academy - Digital Study Materials",
     "start_url": "/index.html",
     "display": "standalone",
     "orientation": "portrait",
