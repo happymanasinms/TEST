@@ -1114,7 +1114,7 @@ function showClasses(lk) {
     viewMode = 'classes'; selectedLevel = lk;
     const level = educationLevels[lk];
     document.getElementById('backButton').style.display = 'inline-flex';
-    document.getElementById('backButtonText').textContent = 'Back to Levels';
+    document.getElementById('backButtonText').textContent = 'ଏଠାରେ ପଛକୁ ଫେରନ୍ତୁ';
     const grid = document.getElementById('mainGrid');
     grid.innerHTML = '';
     if (lk === 'PLUS3-ARTS') { for (const hk in level.honours) grid.appendChild(createHonourCard(lk, hk)); }
@@ -1131,7 +1131,7 @@ function showClasses(lk) {
 function showSubjectsCom(lk, sk) {
     viewMode = 'subjects'; selectedClass = sk;
     document.getElementById('backButton').style.display = 'inline-flex';
-    document.getElementById('backButtonText').textContent = 'Back to Semesters';
+    document.getElementById('backButtonText').textContent = 'ଏଠାରେ ପଛକୁ ଫେରନ୍ତୁ';
     const grid = document.getElementById('mainGrid');
     grid.innerHTML = '';
     const sem = educationLevels[lk].classes[sk];
@@ -1142,7 +1142,7 @@ function showSemesters(lk, hk) {
     viewMode = 'semesters'; selectedClass = hk;
     const hon = educationLevels[lk].honours[hk];
     document.getElementById('backButton').style.display = 'inline-flex';
-    document.getElementById('backButtonText').textContent = 'Back to Honours';
+    document.getElementById('backButtonText').textContent = 'ଏଠାରେ ପଛକୁ ଫେରନ୍ତୁ';
     const grid = document.getElementById('mainGrid');
     grid.innerHTML = '';
     for (const sk in hon.semesters) grid.appendChild(createSemesterCard(lk, hk, sk));
@@ -1151,7 +1151,7 @@ function showSemesters(lk, hk) {
 function showPapers(lk, hk, sk) {
     viewMode = 'papers'; selectedClass = `${hk}-${sk}`;
     document.getElementById('backButton').style.display = 'inline-flex';
-    document.getElementById('backButtonText').textContent = 'Back to Semesters';
+    document.getElementById('backButtonText').textContent = 'ଏଠାରେ ପଛକୁ ଫେରନ୍ତୁ';
     const grid = document.getElementById('mainGrid');
     grid.innerHTML = '';
     const sem = educationLevels[lk].honours[hk].semesters[sk];
@@ -1161,7 +1161,7 @@ function showPapers(lk, hk, sk) {
 function showPlus2Subjects(lk, ck) {
     viewMode = 'subjects'; selectedClass = ck;
     document.getElementById('backButton').style.display = 'inline-flex';
-    document.getElementById('backButtonText').textContent = 'Back to Classes';
+    document.getElementById('backButtonText').textContent = 'ଏଠାରେ ପଛକୁ ଫେରନ୍ତୁ';
     const grid = document.getElementById('mainGrid');
     grid.innerHTML = '';
     const cd = educationLevels[lk].classes[ck];
@@ -1171,7 +1171,7 @@ function showPlus2Subjects(lk, ck) {
 function showSchoolSubjects(lk, ck) {
     viewMode = 'subjects'; selectedClass = ck;
     document.getElementById('backButton').style.display = 'inline-flex';
-    document.getElementById('backButtonText').textContent = 'Back to Classes';
+    document.getElementById('backButtonText').textContent = 'ଏଠାରେ ପଛକୁ ଫେରନ୍ତୁ';
     const grid = document.getElementById('mainGrid');
     grid.innerHTML = '';
     const cd = educationLevels[lk].classes[ck];
