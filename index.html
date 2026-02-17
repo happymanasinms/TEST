@@ -178,6 +178,23 @@
             .submit-btn:hover { transform: translateY(-2px); }
             .pay-floating-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(247,151,30,0.6); }
         }
+
+        /* Info Modal */
+.info-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 3000; justify-content: center; align-items: center; padding: 16px; }
+.info-modal-overlay.active { display: flex; }
+.info-modal-box { background: white; border-radius: 18px; width: 100%; max-width: 480px; max-height: 82vh; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: infoPopIn 0.3s cubic-bezier(0.34,1.56,0.64,1); overflow: hidden; }
+@keyframes infoPopIn { from { transform: scale(0.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.info-modal-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.info-modal-header h2 { color: white; font-size: 1.05em; font-weight: 900; margin: 0; line-height: 1.3; }
+.info-modal-close { background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.4); color: white; width: 34px; height: 34px; border-radius: 50%; font-size: 1em; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+.info-modal-close:active { transform: scale(0.9); background: rgba(255,255,255,0.35); }
+.info-modal-body { padding: 20px; overflow-y: auto; font-size: 0.82em; line-height: 1.75; color: #2d3748; }
+.info-modal-body h3 { color: #667eea; font-size: 0.95em; font-weight: 900; margin: 16px 0 6px; border-left: 3px solid #667eea; padding-left: 8px; }
+.info-modal-body h3:first-child { margin-top: 0; }
+.info-modal-body .odia-text { color: #4a5568; font-size: 0.97em; line-height: 1.85; margin-bottom: 10px; background: #f7f8ff; border-radius: 8px; padding: 8px 10px; border-left: 3px solid #764ba2; }
+.info-modal-body .eng-text { color: #2d3748; margin-bottom: 6px; }
+.info-modal-body .legal-notice { background: #fff5f5; border: 2px solid #fc8181; border-radius: 10px; padding: 12px; margin-top: 14px; }
+.info-modal-body .legal-notice p { color: #c53030; font-weight: 700; margin: 0; font-size: 0.95em; }
     </style>
 </head>
 <body>
@@ -295,15 +312,25 @@
     <h3>🌹 E-Vidya Academy 🌹</h3>
     <p>Private Online Parent Coaching Service<br><strong style="color:#fc8181;">NOT affiliated with Government</strong></p>
     <div class="footer-links">
-        <a href="https://odisha-e-guru-dne.pages.dev/CONTACT%20US/">📧 ଆମ୍ଭ ସହିତ ଯୋଗାଯୋଗ</a>
-        <a href="https://odisha-e-guru-dne.pages.dev/ABOUT%20US/">ABOUT US</a>
-        <a href="https://odisha-e-guru-dne.pages.dev/TERMS%20AND%20CONDITIONS/">📜 Terms and Conditions</a>
-        <a href="https://odisha-e-guru-dne.pages.dev/PRIVACY%20POLICY/">🔒 Privacy Policy</a>
-        <a href="https://odisha-e-guru-dne.pages.dev/REFUND%20POLICY/">💰 Refunds Policy</a>
-        <a href="https://odisha-e-guru-dne.pages.dev/FINANCE/" target="_blank" rel="noopener noreferrer">🔐 Members Area</a>
+        <a href="#" onclick="openInfoModal('contact'); return false;">📧 Contact Us</a>
+        <a href="#" onclick="openInfoModal('about'); return false;">ℹ️ About Us</a>
+        <a href="#" onclick="openInfoModal('terms'); return false;">📜 Terms & Conditions</a>
+        <a href="#" onclick="openInfoModal('privacy'); return false;">🔒 Privacy Policy</a>
+        <a href="#" onclick="openInfoModal('refund'); return false;">💰 Refund Policy</a>
     </div>
     <div class="footer-copyright">© 2026 E-Vidya Academy. All Rights Reserved.<br>Private educational business under Indian law.</div>
 </footer>
+
+<!-- Info Modal -->
+<div class="info-modal-overlay" id="infoModal" onclick="handleInfoModalClick(event)">
+    <div class="info-modal-box" id="infoModalBox">
+        <div class="info-modal-header">
+            <h2 id="infoModalTitle"></h2>
+            <button class="info-modal-close" onclick="closeInfoModal()">✕</button>
+        </div>
+        <div class="info-modal-body" id="infoModalBody"></div>
+    </div>
+</div>
 
 <script>
 // ─── Education Levels Data ────────────────────────────────────────────────────
@@ -690,6 +717,121 @@ function copyUPINew() {
     document.body.style.overflow = 'auto';
 }
 
+// ─── Info Modal Content ───────────────────────────────────────────────────────
+const infoContent = {
+    contact: {
+        title: '📧 Contact Us — ଆମ୍ଭ ସହିତ ଯୋଗାଯୋଗ',
+        body: `
+            <h3>ଯୋଗାଯୋଗ — Contact</h3>
+            <div class="odia-text">ଯଦି ଆପଣଙ୍କର କୌଣସି ପ୍ରଶ୍ନ, ଅଭିଯୋଗ, କିମ୍ବା ଅନୁସନ୍ଧାନ ଅଛି, ଦୟାକରି ନିମ୍ନ ଚ୍ୟାନେଲ ମାଧ୍ୟମରେ ଆମ୍ଭ ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ । ଆମ୍ଭେ ସର୍ବଦା ଆପଣଙ୍କ ସହାୟତା ପାଇଁ ଉପଲବ୍ଧ ।</div>
+            <div class="eng-text">For any query, complaint, or general enquiry regarding E-Vidya Academy services, please reach us through the following channels. We are committed to responding within 24 hours on working days.</div>
+            <h3>📱 WhatsApp</h3>
+            <div class="eng-text"><strong>+91 82608 25712</strong><br>Monday to Saturday — 9:00 AM to 8:00 PM</div>
+            <div class="odia-text">ସୋମବାର ଠାରୁ ଶନିବାର — ସକାଳ ୯ ଟାରୁ ସନ୍ଧ୍ୟା ୮ ଟା ପର୍ଯ୍ୟନ୍ତ ।</div>
+            <h3>📍 Business Address</h3>
+            <div class="eng-text">E-Vidya Academy is a private online coaching service operating under Indian law. All communications are handled digitally.</div>
+            <div class="odia-text">E-Vidya Academy ଏକ ବ୍ୟକ୍ତିଗତ ଅନଲାଇନ୍ କୋଚିଂ ସେବା ଯାହା ଭାରତୀୟ ଆଇନ ଅନୁସାରେ ପରିଚାଳିତ ।</div>
+            <div class="legal-notice"><p>⚠️ This is a PRIVATE service. NOT affiliated with any Government body, Board, or University. ଏହା ଏକ ବ୍ୟକ୍ତିଗତ ସେବା — ସରକାରୀ ନୁହେଁ ।</p></div>
+        `
+    },
+    about: {
+        title: 'ℹ️ About Us — ଆମ୍ଭ ବିଷୟରେ',
+        body: `
+            <h3>ଆମ୍ଭ ପରିଚୟ — Who We Are</h3>
+            <div class="odia-text">E-Vidya Academy ଏକ ଅଭିଭାବକ-ଶିକ୍ଷା ଆଧାରିତ ଅନଲାଇନ୍ କୋଚିଂ ସେବା । ଆମ୍ଭର ଲକ୍ଷ୍ୟ ହେଉଛି ଅଭିଭାବକମାନଙ୍କୁ ସକ୍ଷମ କରିବା ଯଦ୍ଦ୍ୱାରା ସେମାନେ ନିଜ ସନ୍ତାନଙ୍କୁ ଘରେ ବସି ପ୍ରଭାବଶାଳୀ ଭାବରେ ପଢ଼ାଇ ପାରିବେ ।</div>
+            <div class="eng-text">E-Vidya Academy is a privately operated online coaching platform founded with a single powerful mission — to empower parents to become their children's most trusted teachers. We provide structured, syllabus-aligned coaching content for School (Class 1–10), +2 Arts, +2 Commerce, +3 Arts (Honours), +3 Commerce, and LLB.</div>
+            <h3>ଆମ୍ଭ ଦୃଷ୍ଟିଭଙ୍ଗୀ — Our Vision</h3>
+            <div class="odia-text">ପ୍ରତ୍ୟେକ ଶିଶୁ ଗୁଣସମ୍ପନ୍ନ ଶିକ୍ଷା ପ୍ରାପ୍ତ କରୁ, ଭଲ ଟ୍ୟୁଟର ଖୋଜିବାର ଆର୍ଥିକ ବୋଝ ବିନା — ଏହା ଆମ୍ଭ ସ୍ୱପ୍ନ ।</div>
+            <div class="eng-text">Every child deserves quality education without the financial burden of expensive private tuition. We bridge that gap by coaching the parents directly so the learning happens at home, organically and affordably.</div>
+            <h3>ଆମ୍ଭ ସ୍ଥିତି — Our Standing</h3>
+            <div class="eng-text">E-Vidya Academy is owned and operated by <strong>Ranjan Behera</strong> as a sole proprietorship, a lawful private educational business registered and operating under the laws of India.</div>
+            <div class="odia-text">E-Vidya Academy ଶ୍ରୀ ରଞ୍ଜନ ବେହେରାଙ୍କ ଦ୍ୱାରା ପରିଚାଳିତ ଏକ ବୈଧ ବ୍ୟକ୍ତିଗତ ବ୍ୟବସାୟ ।</div>
+            <div class="legal-notice"><p>⚠️ E-Vidya Academy is NOT affiliated with, endorsed by, or connected to any Government, Board, or University. ଏହା କୌଣସି ସରକାରୀ ସଂସ୍ଥା ସହ ସଂଯୁକ୍ତ ନୁହେଁ ।</p></div>
+        `
+    },
+    terms: {
+        title: '📜 Terms & Conditions — ସର୍ତ୍ତ ଓ ନିୟମ',
+        body: `
+            <h3>ସ୍ୱୀକୃତି — Acceptance of Terms</h3>
+            <div class="odia-text">ଏହି ସେବା ବ୍ୟବହାର କରି ଆପଣ ସ୍ୱୀକାର କରୁଛନ୍ତି ଯେ ଆପଣ ଏହି ସର୍ତ୍ତ ଓ ନିୟମ ଗୁଡ଼ିକୁ ସ୍ପଷ୍ଟ ଭାବରେ ପଢ଼ି, ବୁଝି ଏବଂ ସ୍ୱେଚ୍ଛାକ୍ରମେ ଗ୍ରହଣ କରୁଛନ୍ତି ।</div>
+            <div class="eng-text">By accessing or using E-Vidya Academy's services, you unconditionally agree to be legally bound by these Terms and Conditions. If you do not agree, you must immediately discontinue use of this service.</div>
+            <h3>ସେବାର ପ୍ରକୃତି — Nature of Service</h3>
+            <div class="odia-text">E-Vidya Academy ଏକ ଅଭିଭାବକ-ଶିକ୍ଷା ଆଧାରିତ ଅନଲାଇନ୍ ସ୍ୱତନ୍ତ୍ର ବ୍ୟକ୍ତିଗତ କୋଚିଂ ସେବା । ଏଠାରେ ପ୍ରଦାନ କରାଯାଉଥିବା ସଜ୍ଞା ଏବଂ ଶ୍ରେଣୀ ଅଧ୍ୟୟନ ସାମଗ୍ରୀ ଶିଳ୍ଟ ସଂଗ୍ରହ ନୁହେଁ — ଏହା ଅଭିଭାବକ-ନିର୍ଦ୍ଦେଶ ପ୍ରଦାନ ।</div>
+            <div class="eng-text">This is a private coaching service designed to guide parents. E-Vidya Academy does not issue any certificate, degree, diploma, or official qualification of any kind. No content provided herein shall be construed as equivalent to formal education.</div>
+            <h3>ଶୁଳ୍କ ଓ ସଦସ୍ୟତା — Fee and Membership</h3>
+            <div class="odia-text">ମାସିକ ଶୁଳ୍କ ₹150 ଅଟେ । ଶୁଳ୍କ ପ୍ରଦାନ ବ୍ୟତୀତ ସେବାଗ୍ରହଣ ଆଇନ ଅନୁସାରେ ଗ୍ରହଣୀୟ ନୁହେଁ ।</div>
+            <div class="eng-text">The monthly subscription fee is ₹150. Payment must be made in advance. Access to services will be suspended without notice upon non-payment. The proprietor reserves the absolute right to revise fees with prior intimation.</div>
+            <h3>ବ୍ୟବହାର ନୀତି — Acceptable Use</h3>
+            <div class="eng-text">You shall not reproduce, redistribute, resell, or commercially exploit any content from E-Vidya Academy without express written permission. Violation shall attract legal action under applicable Indian intellectual property laws.</div>
+            <div class="odia-text">ଏହି ସେବାର ବିଷୟବସ୍ତୁ ଅନୁମତି ବିନା ବ୍ୟବହାର, ବ୍ୟବସାୟ, କିମ୍ବା ଅନ୍ୟ କୌଣସି ଉଦ୍ଦେଶ୍ୟରେ ବ୍ୟବହାର ଭାରତୀୟ ଆଇନ ଅନୁସାରେ ଦଣ୍ଡନୀୟ ।</div>
+            <h3>ଦାୟଭାର ସୀମା — Limitation of Liability</h3>
+            <div class="eng-text">E-Vidya Academy, its proprietor, and associates shall bear no liability for any academic result, examination outcome, or consequence arising from the use of this service. Results depend entirely on the effort of the student and parent.</div>
+            <div class="odia-text">ପରୀକ୍ଷା ଫଳ ବା ଶିକ୍ଷାଗତ ପ୍ରଦର୍ଶନ ସଂପୂର୍ଣ୍ଣ ଶିକ୍ଷାର୍ଥୀ ଓ ଅଭିଭାବকଙ୍କ ପ୍ରୟାସ ଉପରେ ନିର୍ଭର କରେ । E-Vidya Academy ଏ ଆପ ଦ୍ୱ ଦାୟୀ ନୁହେଁ ।</div>
+            <div class="legal-notice"><p>⚠️ ଏହି ସର୍ତ୍ତ ଭାରତୀୟ ଚୁକ୍ତି ଆଇନ, 1872 ଅନୁସାରେ ବାଧ୍ୟକର । These Terms are legally binding under the Indian Contract Act, 1872.</p></div>
+        `
+    },
+    privacy: {
+        title: '🔒 Privacy Policy — ଗୋପନୀୟତା ନୀତି',
+        body: `
+            <h3>ତଥ୍ୟ ସଂଗ୍ରହ — Data Collection</h3>
+            <div class="odia-text">ଆପଣ ଆବେଦନ କଲା ବେଳେ ଆପଣଙ୍କ ନାମ ଓ ଫୋନ ନମ୍ବର ସଂଗ୍ରହ କରାଯାଏ । ଏହି ତଥ୍ୟ ବ୍ୟତୀତ ଅନ୍ୟ କୌଣସି ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ଆମ୍ଭ ସଂଗ୍ରହ କରୁ ନାହୁଁ ।</div>
+            <div class="eng-text">E-Vidya Academy collects only the minimum personal data necessary to provide its services — specifically your name and contact number submitted during enrolment. We do not collect sensitive personal data including financial details, Aadhaar, or passwords.</div>
+            <h3>ତଥ୍ୟ ବ୍ୟବହାର — Use of Data</h3>
+            <div class="odia-text">ଆପଣଙ୍କ ତଥ୍ୟ କେବଳ ସେବା ଯୋଗାଯୋଗ ପାଇଁ ବ୍ୟବହୃତ ହୁଏ । ଏହା ତୃତୀୟ ପକ୍ଷଙ୍କ ନିକଟରେ ବିକ୍ରୟ ବା ହସ୍ତାନ୍ତର କରାଯାଏ ନାହିଁ ।</div>
+            <div class="eng-text">Your personal data is used exclusively for the purpose of service delivery, communication, and fee reminders. Under no circumstances shall your data be sold, rented, traded, or transferred to any third party without your explicit consent.</div>
+            <h3>ତଥ୍ୟ ସୁରକ୍ଷା — Data Security</h3>
+            <div class="eng-text">We take reasonable precautions to protect your data from unauthorized access. However, no digital transmission is 100% secure. You acknowledge and accept this inherent risk when using any online service.</div>
+            <div class="odia-text">ଆମ୍ଭ ଆପଣଙ୍କ ତଥ୍ୟ ସୁରକ୍ଷା ପାଇଁ ଯଥାସାଧ୍ୟ ପ୍ରୟାସ କରୁ, ତଥାପି ଅନଲାଇନ ପ୍ରସାରଣ ସଂପୂର୍ଣ୍ଣ ସୁରକ୍ଷିତ ନୁହେଁ — ଏହା ଆପଣ ସ୍ୱୀକାର କରୁଛନ୍ତି ।</div>
+            <h3>ତୃତୀୟ ପକ୍ଷ — Third Parties</h3>
+            <div class="eng-text">Our service integrates with WhatsApp and UPI payment platforms. Their use is governed by their own respective privacy policies. E-Vidya Academy bears no responsibility for data handled by these third-party platforms.</div>
+            <div class="odia-text">WhatsApp ଓ UPI ପ୍ଲାଟଫର୍ମ ସେମାନଙ୍କ ନିଜ ନୀତି ଅନୁସାରେ ଚାଲେ — ସେ ବ୍ୟାପାରରେ E-Vidya Academy ଦାୟୀ ନୁହେଁ ।</div>
+            <h3>ଅଧିକାର — Your Rights</h3>
+            <div class="eng-text">You have the right to request deletion of your personal data at any time by contacting us on WhatsApp. We will comply within 7 working days as required under the Digital Personal Data Protection Act, 2023.</div>
+            <div class="odia-text">ଡିଜିଟାଲ ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ସୁରକ୍ଷା ଆଇନ 2023 ଅନୁସାରେ ଆପଣ ଆପଣଙ୍କ ତଥ୍ୟ ମୋଛିବାର ଅଧିକାର ରଖନ୍ତି ।</div>
+            <div class="legal-notice"><p>⚠️ ଭାରତୀୟ ତଥ୍ୟ ସୁରକ୍ଷା ଆଇନ 2023 ଅନୁଯାୟୀ ଏହି ନୀତି ପ୍ରଣୀତ । This Policy is governed by the Digital Personal Data Protection Act, 2023.</p></div>
+        `
+    },
+    refund: {
+        title: '💰 Refund Policy — ଫେରସ୍ତ ନୀତି',
+        body: `
+            <h3>ସ୍ପଷ୍ଟ ଘୋଷଣା — Clear Declaration</h3>
+            <div class="odia-text">E-Vidya Academy ର ସମସ୍ତ ଶୁଳ୍କ ପ୍ରଦାନ ଅଣ-ଫେରସ୍ତଯୋଗ୍ୟ ଅଟେ । ଏହାକୁ ଆପଣ ସ୍ୱୀକାର କରି ଶୁଳ୍କ ପ୍ରଦାନ କରୁଛନ୍ତି ।</div>
+            <div class="eng-text"><strong>ALL FEES PAID TO E-VIDYA ACADEMY ARE STRICTLY NON-REFUNDABLE.</strong> By making payment, you acknowledge and agree that you have read, understood, and accepted this refund policy in full before completing the transaction.</div>
+            <h3>ଫେରସ୍ତ ନ ହେବାର କାରଣ — Why No Refund</h3>
+            <div class="eng-text">The monthly fee of ₹150 provides immediate and continuous access to digital coaching content, live sessions, and support services. Once access is granted, the service has been fully rendered and therefore no refund shall be issued under any circumstance including — but not limited to — dissatisfaction, non-usage, internet failure, or device issues.</div>
+            <div class="odia-text">ଶୁଳ୍କ ପ୍ରଦାନ ସଙ୍ଗେ ସଙ୍ଗେ ଡିଜିଟାଲ ସେବା ପ୍ରଦାନ ଆରମ୍ଭ ହୋଇଯାଏ ।ଡିଜିଟାଲ ସେବା ଇଲେକ୍ଟ୍ରୋନିକ ବ୍ୟାପାର ଆଇନ ଅନୁସାରେ ଫେରସ୍ତ ହୁଏ ନାହିଁ ।</div>
+            <h3>ବ୍ୟତିକ୍ରମ — Exception</h3>
+            <div class="eng-text">A refund may be considered ONLY in the exceptional circumstance where E-Vidya Academy itself has permanently ceased operations and the paid service period has not yet been utilized. In such event, a pro-rata refund may be issued at the sole discretion of the proprietor.</div>
+            <div class="odia-text">କେବଳ ଯଦି E-Vidya Academy ସ୍ୱୟଂ ସ୍ଥାୟୀ ଭାବରେ ବନ୍ଦ ହୋଇଯାଏ ଏବଂ ସେବା ଅସଂପୂର୍ଣ୍ଣ ରହିଯାଏ, ସ୍ୱତ୍ୱାଧିକାରୀ ଙ୍କ ବିବେଚନାରେ ଆଂଶିକ ଫେରସ୍ତ ସମ୍ଭବ ।</div>
+            <h3>ଅଭିଯୋଗ — Grievance</h3>
+            <div class="eng-text">Any dispute regarding this policy shall be subject to the jurisdiction of courts located in Odisha, India. Governing law shall be the laws of India including the Consumer Protection Act, 2019 and the Information Technology Act, 2000.</div>
+            <div class="odia-text">ଯେ କୌଣସି ବିବାଦ ଓଡ଼ିଶା ରାଜ୍ୟର ଆଦାଲତ ଅଧୀନ ଥିବ । ଭାରତୀୟ ଗ୍ରାହକ ସୁରକ୍ଷା ଆଇନ 2019 ଏବଂ ସୂଚନା ଓ ପ୍ରଯୁକ୍ତି ଆଇନ 2000 ଏଠାରେ ପ୍ରଯୁଜ୍ୟ ।</div>
+            <div class="legal-notice"><p>⚠️ ଭୁଲ ବୁଝାମଣା ବା ଅଜ୍ଞତା ଫେରସ୍ତ ଦାବির ଆଧାର ନୁହେଁ । Ignorance of this policy shall not constitute grounds for a refund claim.</p></div>
+        `
+    }
+};
+
+function openInfoModal(key) {
+    const content = infoContent[key];
+    if (!content) return;
+    document.getElementById('infoModalTitle').textContent = content.title;
+    document.getElementById('infoModalBody').innerHTML = content.body;
+    document.getElementById('infoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeInfoModal() {
+    document.getElementById('infoModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function handleInfoModalClick(e) {
+    if (e.target === document.getElementById('infoModal')) closeInfoModal();
+}
+
+
+
+    
 // ─── Basic Training Card ──────────────────────────────────────────────────────
 function createBasicTrainingCard() {
     const c = document.createElement('a');
